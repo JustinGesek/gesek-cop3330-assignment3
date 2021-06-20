@@ -1,0 +1,8 @@
+@startuml
+class app45
+{
+    main()
+}
+
+
+@enduml

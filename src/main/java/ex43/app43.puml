@@ -1,0 +1,7 @@
+@startuml
+class app43
+{
+    main()
+}
+
+@enduml
