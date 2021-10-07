@@ -3,6 +3,7 @@
 class app42
 {
     main()
+    scanAndSort()
 }
 
 @enduml

@@ -1,6 +1,14 @@
 @startuml
 class app44
 {
-    main()
+main()
 }
+class Product
+{
+found
+name
+price
+quantity
+}
+app44 "1" *-- "1" Product
 @enduml

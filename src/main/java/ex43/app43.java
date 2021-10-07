@@ -1,6 +1,6 @@
 package ex43;
 /*
- *  UCF COP3330 Summer 2021 Assignment 3 Solution
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
  *  Copyright 2021 Justin Gesek
  */
 import java.io.File;
@@ -26,6 +26,36 @@ import java.util.*;
 //Created ./website/awesomeco/css/
 //The user should then find these files and directories created in the working directory of your program.
 public class app43 {
+    public static void createSite(String siteName, String authorName, Boolean createJsFolder, Boolean createCSSFolder)
+    {
+        if (createJsFolder)
+        {
+            File JsFolder = new File("./js");
+            if (!JsFolder.exists())
+            {
+                JsFolder.mkdir();
+            }
+        }
+        if (createCSSFolder)
+        {
+            File CSSFolder = new File("./css");
+            if (!CSSFolder.exists())
+            {
+                CSSFolder.mkdir();
+            }
+        }
+        //create the index file
+
+        try {
+            FileWriter index = new FileWriter("./index.html");
+            index.write("<title>" + siteName + "</title>\n");
+            index.write("<meta>" + authorName + "</meta>\n");
+        }catch (IOException e)
+        {
+            System.out.println("Unable to open or write index.html");
+            return;
+        }
+    }
     public static void main(String[] args) {
         //ask user for name and author of the site.
         Scanner scanner = new Scanner(System.in);
@@ -41,35 +71,11 @@ public class app43 {
         System.out.print("Do you want a javascript folder? ");
         String jsFolderResponse = scanner.nextLine().trim().toLowerCase(Locale.ROOT);
         boolean createJsFolder = jsFolderResponse.charAt(0) == 'y';
-        if (createJsFolder)
-        {
-            File JsFolder = new File("C:\\Users\\Justin Gesek\\IdeaProjects\\BookExample1\\temt\\gesek-cop3330-assignment3\\src\\main\\java\\ex43\\js");
-            if (!JsFolder.exists())
-            {
-                JsFolder.mkdir();
-            }
-        }
+
         //ask whether css folder is requested, and create it if so.
         System.out.print("Do you want a CSS folder? ");
         String CSSFolderResponse = scanner.nextLine().trim().toLowerCase(Locale.ROOT);
         boolean createCSSFolder = CSSFolderResponse.charAt(0) == 'y';
-        if (createCSSFolder)
-        {
-            File CSSFolder = new File("C:\\Users\\Justin Gesek\\IdeaProjects\\BookExample1\\temt\\gesek-cop3330-assignment3\\src\\main\\java\\ex43\\css");
-            if (!CSSFolder.exists())
-            {
-                CSSFolder.mkdir();
-            }
-        }
-        //create the index file
-        try {
-            FileWriter index = new FileWriter("C:\\Users\\Justin Gesek\\IdeaProjects\\BookExample1\\temt\\gesek-cop3330-assignment3\\src\\main\\java\\ex43\\index.html");
-            index.write("<title>" + siteName + "</title>\n");
-            index.write("<meta>" + authorName + "</meta>\n");
-        }catch (IOException e)
-        {
-            System.out.println("Unable to open or write index.html");
-            return;
-        }
+        createSite(siteName, authorName, createJsFolder, createCSSFolder);
     }
 }
