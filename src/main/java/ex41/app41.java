@@ -1,6 +1,6 @@
 package ex41;
 /*
- *  UCF COP3330 Summer 2021 Assignment 3 Solution
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
  *  Copyright 2021 Justin Gesek
  */
 import java.io.File;
@@ -31,6 +31,18 @@ import java.lang.Math;
 //Constraint
 //Don't hard-code the number of names.
 public class app41 {
+    public static ArrayList<String> scanAndSort(Scanner scanner)
+    {
+        //read input and save the result
+        ArrayList<String>names=new ArrayList<String>();
+        while(scanner.hasNext())
+        {
+            names.add(scanner.nextLine());
+        }
+        //sort the input
+        Collections.sort(names);
+        return names;
+    }
     public static void main(String[] args) {
         //set up a scanner and file to read input.
         Scanner scanner;
@@ -44,14 +56,7 @@ public class app41 {
             System.out.println("Unable to open input file.");
             return;
         }
-        //read input and save the result
-        ArrayList<String>names=new ArrayList<String>();
-        while(scanner.hasNext())
-        {
-            names.add(scanner.nextLine());
-        }
-        //sort the input
-        Collections.sort(names);
+        ArrayList<String> names = scanAndSort(scanner);
         //write the input formatted as a table
         System.out.printf("Total of %d names.\n", names.size());
         System.out.println("-----------------");

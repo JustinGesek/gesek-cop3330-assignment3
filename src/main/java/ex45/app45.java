@@ -1,6 +1,6 @@
 package ex45;
 /*
- *  UCF COP3330 Summer 2021 Assignment 3 Solution
+ *  UCF COP3330 Fall 2021 Assignment 3 Solution
  *  Copyright 2021 Justin Gesek
  */
 import java.io.FileNotFoundException;
@@ -29,8 +29,13 @@ import org.json.simple.parser.ParseException;
 //Prompt for the name of the output file.
 //Write the output to a new file.
 public class app45 {
-    public static void main(String[] args) {
+    public static String replaceAllUtilize(String line){
         Pattern pattern = Pattern.compile("\\butilize");
+        Matcher match = pattern.matcher(line);
+        line = match.replaceAll("use");
+        return line;
+    }
+    public static void main(String[] args) {
         try {
             //open input and an output file
             FileReader input = new FileReader("C:\\Users\\Justin Gesek\\IdeaProjects\\BookExample1\\temt\\gesek-cop3330-assignment3\\src\\main\\java\\ex45\\exercise45_input.txt");
@@ -38,9 +43,8 @@ public class app45 {
             FileWriter out = new FileWriter("C:\\Users\\Justin Gesek\\IdeaProjects\\BookExample1\\temt\\gesek-cop3330-assignment3\\src\\main\\java\\ex45\\exercise45_output.txt");
             while (scanner.hasNext()) {
                 // for each line look for matches to any word that starts with utilize and replace it with use.
-                String line = scanner.nextLine();
-                Matcher match = pattern.matcher(line);
-                line = match.replaceAll("use");
+                String line = replaceAllUtilize(scanner.nextLine());
+
                 // write the updated line to the output.
                 out.write(line + "\n");
             }
